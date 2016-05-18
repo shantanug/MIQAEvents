@@ -22,6 +22,8 @@ public class KissmetricsClient {
 	private static final String START_QUALIFYING = "Start Qualifying";
 	private static final String END_QUALIFYING =  "End Qualifying";
 	
+	static Analytics analytics = Analytics.builder("5vHttpjYtGZ0fCntVX6x7cwwZ2DHGhQj").build();
+
 	
 
 	public static void main(String[] args) {
