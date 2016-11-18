@@ -10,35 +10,48 @@ import org.quartz.Scheduler;
 import org.quartz.SimpleTrigger;
 import org.quartz.impl.StdSchedulerFactory;
 
-public class MIQASimpleTrigger 
-{
-//	private static int timeout  = 1000 * 60 * 60 ;
-	private static int timeout  =  1000*60 ;
+public class MIQASimpleTrigger {
+	// private static int timeout = 1000 * 60 * 60 ;
+	private static int timeout = 1000 * 60;
 	private static final String TIMEOUT_FILE = "timeout.txt";
-	
-    public static void main( String[] args ) throws Exception
-    {	
-    	int timeoutInSeconds = getTimeOut("timeout.txt");
-    	if(timeoutInSeconds > 0) {
-//    		timeout = timeoutInSeconds * 60 * 1000;
-    	}
-       	JobDetail job = new JobDetail();
-    	job.setName("dummyJobName");
-    	job.setJobClass(SendMIQAEvents.class);
-    	
-    	//configure the scheduler time
-    	SimpleTrigger trigger = new SimpleTrigger();
-    	trigger.setName("miqaEventPush");
-    	trigger.setStartTime(new Date(System.currentTimeMillis() + 5000));
-    	trigger.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
-    	trigger.setRepeatInterval(timeout);
-    	
-    	//schedule it
-    	Scheduler scheduler = new StdSchedulerFactory().getScheduler();
-    	scheduler.start();
-    	scheduler.scheduleJob(job, trigger);
 
-    }
+	public static int getIntVal(char c) {
+		if (c == 'A')
+			return 1;
+		if (c == 'C')
+			return 2;
+		if (c == 'G')
+			return 3;
+		if (c == 'T')
+			return 4;
+		return -1;
+	}
+	
+	
+		
+	public static void main(String[] args) throws Exception {
+		getIntVal('C');
+		int timeoutInSeconds = getTimeOut("timeout.txt");
+		if (timeoutInSeconds > 0) {
+			// timeout = timeoutInSeconds * 60 * 1000;
+		}
+		JobDetail job = new JobDetail();
+		job.setName("dummyJobName");
+		job.setJobClass(SendMIQAEvents.class);
+
+		// configure the scheduler time
+		SimpleTrigger trigger = new SimpleTrigger();
+		trigger.setName("miqaEventPush");
+		trigger.setStartTime(new Date(System.currentTimeMillis() + 5000));
+		trigger.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
+		trigger.setRepeatInterval(timeout);
+
+		// schedule it
+		Scheduler scheduler = new StdSchedulerFactory().getScheduler();
+		scheduler.start();
+		scheduler.scheduleJob(job, trigger);
+
+	}
 
 	private static int getTimeOut(String string) {
 		Scanner scanner;

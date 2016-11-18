@@ -22,7 +22,7 @@ public class KissmetricsClient {
 	private static final String START_QUALIFYING = "Start Qualifying";
 	private static final String END_QUALIFYING =  "End Qualifying";
 	
-	static Analytics analytics = Analytics.builder("5vHttpjYtGZ0fCntVX6x7cwwZ2DHGhQj").build();
+	static Analytics analytics = Analytics.builder("kDib1spdoH4wdNc7TAQYaanFTpWsTsZJ").build();
 
 	
 
@@ -55,12 +55,17 @@ public class KissmetricsClient {
 		Map<String, String> propertiesMap = buildProperties(userName,eventName,utmMap);
 		Analytics analytics = Analytics.builder(segmentApiKey).build();
 		analytics.enqueue(TrackMessage.builder(eventName)
-			    .userId(userName)
-			);
-		analytics.enqueue(IdentifyMessage.builder()
-			    .userId(userName)
-			    .traits(propertiesMap)
-			);
+			    .userId(userName).properties(propertiesMap));
+
+//		analytics.enqueue(TrackMessage.builder(eventName)
+//			    .userId(userName)
+//			);
+		
+		
+//		analytics.enqueue(IdentifyMessage.builder()
+//			    .userId(userName)
+//			    .traits(propertiesMap)
+//			);
 		try {
 			url = buildKMUrl(userName,eventName,utmMap,apiKey);
 			sendGet(url);

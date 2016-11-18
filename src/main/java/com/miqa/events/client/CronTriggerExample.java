@@ -9,19 +9,35 @@ public class CronTriggerExample
 {
     public static void main( String[] args ) throws Exception
     {
+    	JobDetail job = null;
+    	CronTrigger trigger = null;
+    	Scheduler scheduler = null;
     	
-    	JobDetail job = new JobDetail();
+    	/*job = new JobDetail();
     	job.setName("dummyJobName");
     	job.setJobClass(SendMIQAEvents.class);
     	    	
-    	CronTrigger trigger = new CronTrigger();
+    	trigger = new CronTrigger();
     	trigger.setName("dummyTriggerName");
     	trigger.setCronExpression("0/30 * * * * ?");
     	
     	//schedule it
-    	Scheduler scheduler = new StdSchedulerFactory().getScheduler();
+    	scheduler = new StdSchedulerFactory().getScheduler();
     	scheduler.start();
     	scheduler.scheduleJob(job, trigger);
     
+    	*/
+    	job = new JobDetail();
+    	job.setName("attemptSummary");
+    	job.setJobClass(AttemptsSummaryGenerator.class);
+    	    	
+    	trigger = new CronTrigger();
+    	trigger.setName("attemptSummary");
+    	trigger.setCronExpression("0/30 * * * * ?");
+    	
+    	//schedule it
+    	scheduler = new StdSchedulerFactory().getScheduler();
+    	scheduler.start();
+    	scheduler.scheduleJob(job, trigger);
     }
 }
