@@ -216,14 +216,13 @@ public class AttemptsSummaryGenerator implements Job {
 	}
 
 	private static Connection getConnection() throws SQLException {
-
 		if(conn != null) return conn;
 		
-		String serverName = "localhost";
+		String serverName = "10.211.65.126";
 		String portNumber = "3306";
 		String dbms = "mysql";
-		String userName = "root";
-		String password = "";
+		String userName = "miqaprivate";
+		String password = "EgmatMIQADB@dmin";
 		
 		Properties connectionProps = new Properties();
 		connectionProps.put("user", userName);
@@ -231,7 +230,7 @@ public class AttemptsSummaryGenerator implements Job {
 		
 		
 		conn = DriverManager.getConnection("jdbc:" + dbms + "://"
-				+ serverName + ":" + portNumber + "/miqa_prod_17_nov",
+				+ serverName + ":" + portNumber + "/miqa_prod_7thOct",
 				connectionProps);
 
 		System.out.println("Connected to database");
