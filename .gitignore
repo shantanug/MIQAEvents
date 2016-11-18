@@ -49,3 +49,5 @@ Temporary Items
 *.class
 target/MiqaEvents-1.0-SNAPSHOT-jar-with-dependencies.jar
 *.gitignore~
+target/maven-archiver/pom.properties
+*.jar
