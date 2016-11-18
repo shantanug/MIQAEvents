@@ -33,7 +33,7 @@ public class CronTriggerExample
     	    	
     	trigger = new CronTrigger();
     	trigger.setName("attemptSummary");
-    	trigger.setCronExpression("0/30 * * * * ?");
+    	trigger.setCronExpression("0 0/10 * * * ?");
     	
     	//schedule it
     	scheduler = new StdSchedulerFactory().getScheduler();

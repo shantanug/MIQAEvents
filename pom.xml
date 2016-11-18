@@ -48,7 +48,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.miqa.events.client.SendMIQAEvents</mainClass>
+							<mainClass>com.miqa.events.client.CronTriggerExample</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
