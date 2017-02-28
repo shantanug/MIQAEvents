@@ -23,6 +23,34 @@ public class AttemptSummary {
 	private boolean isFirstAttempt;
 	private String DifficultyLevel;
 	private int totalCount;
+	private long incorrectDuration;
+	private long correctDuration;
+	private long totalDuration;
+	
+	
+	public long getIncorrectDuration() {
+		return incorrectDuration;
+	}
+
+	public void setIncorrectDuration(long incorrectDuration) {
+		this.incorrectDuration = incorrectDuration;
+	}
+
+	public long getCorrectDuration() {
+		return correctDuration;
+	}
+
+	public void setCorrectDuration(long correctDuration) {
+		this.correctDuration = correctDuration;
+	}
+
+	public long getTotalDuration() {
+		return totalDuration;
+	}
+
+	public void setTotalDuration(long totalDuration) {
+		this.totalDuration = totalDuration;
+	}
 
 	public int getQuestionId() {
 		return questionId;

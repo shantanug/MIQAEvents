@@ -29,15 +29,23 @@ public class CronTriggerExample
     	*/
     	job = new JobDetail();
     	job.setName("attemptSummary");
-    	job.setJobClass(AttemptsSummaryGenerator.class);
+    	if(isScholaranium())
+    		job.setJobClass(ScholAttemptsSummaryGenerator.class);
+	    else
+    		job.setJobClass(AttemptsSummaryGenerator.class);
     	    	
     	trigger = new CronTrigger();
     	trigger.setName("attemptSummary");
-    	trigger.setCronExpression("0 0/10 * * * ?");
+    	trigger.setCronExpression("0 0/1 * * * ?");
     	
     	//schedule it
     	scheduler = new StdSchedulerFactory().getScheduler();
     	scheduler.start();
     	scheduler.scheduleJob(job, trigger);
     }
+
+	private static boolean isScholaranium() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }
